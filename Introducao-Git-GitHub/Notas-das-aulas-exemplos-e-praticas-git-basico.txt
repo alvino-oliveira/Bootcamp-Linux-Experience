@@ -1,0 +1,133 @@
+Notas das aulas, exemplos e práticas do git básico 
+   
+Instalando o Git
+   #zypper in git
+   #git --version
+		git version 2.35.3
+		
+Configurações do git
+	#git config --global user.email "alvino.oliveira@gmail.com"
+	#git config --global user.name alvino-oliveira
+	#git config --list
+	
+Configurações realizadas com sucesso!
+
+
+Se ainda não tem conta no github é necessário criar uma.
+Se já possue conta prosseguir gerando o par de chaves ssh.
+	#ssh-keygen -t ed25519 -C alvino.oliveira@gmail.com
+   
+		Generating public/private ed25519 key pair.
+		Enter file in which to save the key (/root/.ssh/id_ed25519):
+		Created directory '/root/.ssh'.
+		Enter passphrase (empty for no passphrase):
+		Enter same passphrase again:
+		Your identification has been saved in /root/.ssh/id_ed25519
+		Your public key has been saved in /root/.ssh/id_ed25519.pub
+		The key fingerprint is:
+		SHA256:xJy21ZD6uiaI80oovYgEJ7bH4aM69xmb2JsE2TIY4T0 alvino.oliveira@gmail.com
+		The key's randomart image is:
+		+--[ED25519 256]--+
+		|.         ..     |
+		|...    o ..o     |
+		|.. E    *.. .    |
+		| o o.  o.o       |
+		|+.*..   S.       |
+		|o=++.     .      |
+		|ooo*o.   .       |
+		|=o*=o*. o        |
+		|=++=X. o..       |
+		+----[SHA256]-----+
+
+Par de chaves de cifragem geradas com sucesso!
+  	# cd /root/.ssh/
+    # ll
+			-rw------- 1 root root 419 Aug 16 20:21 id_ed25519
+			-rw-r--r-- 1 root root 107 Aug 16 20:21 id_ed25519.pub
+   
+	# cat id_ed25519
+		
+		-----BEGIN OPENSSH PRIVATE KEY-----
+		b3BlbnNzaC1rZXktdjEAAAAABG5vKNKKB9o0bm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+		QyNTUxOQAAACBOgxE2E0sGV30UJZX/ns1ShwA3fW5IATMQtl5kksEJwwAAAKA9mPlcPZj5
+		XAAAAAtzc2gtZWQyNTUxOQAAACBOgxE2E0sGV30dkue/ns1ShwA3fW5IATMQtl5kksEJww
+		AAAEAa0/UBrCvVPi9UBTBKZi0zRUYkulfZvrGpFSmLUWjNC06DETYTSwZXfRQllf+ezVKH
+		ADd9bkgBMxC2XmSSwQnDAAAAGWFsdmluby5vbGl2ZWlyYUBnbWFpbC5jb20BAgME
+		-----END OPENSSH PRIVATE KEY-----
+		
+	# cat id_ed25519.pub	
+		
+		ssh-ed25519 AAAAC3NzaC1lZDI1NTE5DFSNALKNKJ8ZXfRQllf+ezVKHADd9bkgBMxC2XmSSwQnD
+     		alvino.oliveira@gmail.com
+Copiar esta chave pública e colar no github caminho > User > Settings > SSH and GPG Keys
+
+
+Subindo o agente ssh e adicionando a chave privada
+	# eval $(ssh-agent -s)
+		Agent pid 14806
+
+	# ssh-add id_ed25519
+		
+		Identity added: id_ed25519 (alvino.oliveira@gmail.com)
+
+Criar repositório no github. Caminho >User > Your Repositories > New.
+	Criado o repositório Bootcamp-Linux-Experience
+	
+Fazer o clone do Repositório do github para máquina local. Acessar o repositório criado. 
+No botão code. Abrir dropdow menu e selecionar opção ssh. Copiar o endereço fornecido.
+A partir da máquina local fazer o clone do repositório criado.
+	# cd /opt/workspace/
+	# git clone git@github.com:alvino-oliveira/Bootcamp-Linux-Experience.git
+
+		Cloning into 'Bootcamp-Linux-Experience'...
+		The authenticity of host 'github.com (20.201.28.151)' can't be established.
+		ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWdjk98drVc98/R1BUFWu3/LiyKgUfQM.
+		Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+		Warning: Permanently added 'github.com,xx.201.xx.151' (ECDSA) to the list of known                                                                   hosts.
+		remote: Enumerating objects: 3, done.
+		remote: Counting objects: 100% (3/3), done.
+		remote: Compressing objects: 100% (2/2), done.
+		remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+		Receiving objects: 100% (3/3), 12.42 KiB | 3.10 MiB/s, done.
+
+Clone executado com sucesso!
+
+Criar o README.md
+Criar estrutura de diretórios
+Criar arquivos com conteúdos
+	.
+	.
+	.
+
+Verificando o status do repositório
+	#git status
+		On branch main
+		Your branch is up to date with 'origin/main'.
+
+		nothing to commit, working tree clean
+
+Adicionando o repositório para o stage area:
+	git add *
+	
+Fazendo o commit
+	#git commit -m "Commit inicial"
+	
+Commit realizado com sucesso!
+
+Enviando o código commitado para o github.
+
+
+Teoria de funcionamento do git
+
+Primeiros omandos para entender os conceitos de hash sha1
+	echo "Olá Mundo!"	
+	echo "Olá Mundo!" | openssl sha1
+	echo "Olá Mundo." | openssl sha1
+
+Obojetos do git
+	blobs
+	tres
+	commit
+	
+
+	
